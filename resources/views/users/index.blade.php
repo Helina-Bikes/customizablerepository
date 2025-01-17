@@ -35,7 +35,8 @@
         </td>
         <td>
             @can('Edit Users')
-            <a href="{{ url('users/'.$user->id.'/edit') }}" class="btn btn-success">
+            <a href="{{ url('users/'.$user->id.'/edit') }}" class="btn btn-sm btn-outline-success me-2 d-flex align-items-center"> 
+                <i class="fas fa-edit me-1"></i>
                  Edit
             </a>
             @endcan
@@ -45,7 +46,8 @@
     <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger mx-2">Delete</button>
+        <button type="submit"  class="btn btn-sm btn-outline-danger d-flex align-items-center">
+            <i class="fas fa-trash me-1"></i>Delete</button>
     </form>
 @endcan
 
