@@ -44,13 +44,13 @@
                                     <td>{{ $product->departmentname }}</td>
                                     <td>
                                     @can('Edit Product')
-                                            <a href="{{ url('product/'.$product->id.'/edit') }}" class="btn btn-success">Edit</a>
+                                            <a href="{{ url('product/'.$product->id.'/edit') }}" class="btn btn-sm btn-outline-success me-2 d-flex align-items-center"> <i class="fas fa-edit me-1"></i>Edit</a>
                                         @endcan
                                         @can('Delete Product')
                                             <form action="{{ url('product/'.$product->id) }}" method="POST" class="d-inline delete-form">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger delete-btn">Delete</button>
+                                                <button type="submit" class="btn btn-sm btn-outline-danger d-flex align-items-center"> <i class="fas fa-trash me-1"></i>Delete</button>
                                             </form>
                                         @endcan
                                     </td>
