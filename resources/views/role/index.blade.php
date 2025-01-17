@@ -33,7 +33,8 @@
      <td> {{$role->name}}</td>  
      <td> {{$role->roledesc}}</td>  
      <td>
-     <a href="{{ url('roles/'.$role->id.'/give-permissions') }}" class="btn btn-success">
+     <a href="{{ url('roles/'.$role->id.'/give-permissions') }}" class="btn btn-sm btn-outline-success me-2 d-flex align-items-center"><i class="fas fa-edit me-1"></i>
+     
       Add/Edit Role Permission
     </a>
     @can('Edit Roles')
