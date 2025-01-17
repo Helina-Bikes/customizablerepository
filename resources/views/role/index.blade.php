@@ -37,12 +37,13 @@
       Add/Edit Role Permission
     </a>
     @can('Edit Roles')
-     <a href="{{ url('roles/'.$role->id.'/edit') }}" class="btn btn-success">
+     <a href="{{ url('roles/'.$role->id.'/edit') }}"class="btn btn-sm btn-outline-success me-2 d-flex align-items-center"><i class="fas fa-edit me-1"></i>
       Edit  </a>
     @endcan  
 
     @can('Delete Roles')
-     <a href="{{ url('roles/'.$role->id .'/delete') }}" class="btn btn-danger mx-2">
+     <a href="{{ url('roles/'.$role->id .'/delete') }}" class="btn btn-sm btn-outline-danger d-flex align-items-center">
+     <i class="fas fa-trash me-1"></i>
       Delete</a>
     @endcan
 
