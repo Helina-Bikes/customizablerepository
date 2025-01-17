@@ -23,7 +23,7 @@
         }
     </script>
     <div class="container mt-5">
-        <h1>Add New Product</h1>
+    <h1 style="color: #007bff; font-weight: bold;">Add New Product</h1>
         <form action="{{ route('product.store') }}" method="POST" class="form-container">
             @csrf
 
@@ -128,9 +128,10 @@
         padding: 0.5rem;
         border-radius: 0.25rem;
     }
+    
     .btn-primary {
-        margin-top: 1rem;
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
     }
 </style>
