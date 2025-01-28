@@ -10,6 +10,7 @@ class RoleSeeder extends Seeder{
 public function run()
 {
     // Create roles with description
+   
     $superAdmin = Role::create(['name' => 'Super Admin', 'roledesc' => 'Has access to all roles and permissions']);
     $admin = Role::create(['name' => 'Admin', 'roledesc' => 'Manages all product, category, and sales data']);
     $productManager = Role::create(['name' => 'Product Manager', 'roledesc' => 'Manages products and categories']);

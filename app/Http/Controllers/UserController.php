@@ -24,7 +24,7 @@ class UserController extends Controller
     public function index()
 {
    $users=User::get();
-
+   $users = User::where('name', '!=', 'System Owner')->get();
     return view('users.index',[
         'users'=>$users
 

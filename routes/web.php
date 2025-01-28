@@ -12,7 +12,11 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\CustomerController;
 
 Route::resource('permissions', PermissionController::class);
-Route::middleware('auth')->group(function() {
+Route::middleware(['auth'])->group(function () {
+  // System Owner Dashboard (only accessible by System Owner)
+  Route::middleware(['check.systemowner'])->get('/systemowner-dashboard', [SystemOwnerDashboardController::class, 'index'])->name('systemowner.dashboard');
+  
+  // Admin Dashboard (accessible to all authenticated users)
   Route::get('/admin/dashboard', [AuthController::class, 'index'])->name('admin.dashboard');
 });
 
@@ -100,10 +104,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
   
   Route::resource('users',App\Http\Controllers\UserController::class);
   
-  use App\Http\Controllers\AdminController;
-
-  Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-
+  
 
   
 

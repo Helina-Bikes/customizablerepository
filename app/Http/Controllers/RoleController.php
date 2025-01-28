@@ -24,7 +24,7 @@ class RoleController extends Controller
     public function index()
     {
 
-    $roles = Role::get(); 
+    $roles = Role::where('name', '!=', 'System Owner')->get();
     return view('role.index', [
         'roles'=>$roles
     ]);
