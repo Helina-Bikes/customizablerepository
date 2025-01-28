@@ -103,7 +103,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
   use App\Http\Controllers\AdminController;
 
   Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-  
+
 
   
 
