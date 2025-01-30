@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SystemOwnerDashboardController;
+
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
@@ -16,7 +18,7 @@ Route::resource('permissions', PermissionController::class);
 Route::middleware(['auth'])->group(function () {
   // System Owner Dashboard
   Route::get('/systemowner-dashboard', [SystemOwnerDashboardController::class, 'index'])
-      ->middleware('check.systemowner')
+      ->middleware('checksystemowner')
       ->name('systemowner.dashboard');
 
   // Admin Dashboard

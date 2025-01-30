@@ -1,23 +1,23 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\Department;
+
+use App\Models\Product;
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class SystemOwnerDashboardController extends Controller
 {
-    public function __construct()
+    public function index()
     {
-        // Middleware to make sure only the System Owner can access this dashboard
-        $this->middleware('role:System Owner');
-    }
+        // Fetch the recent products (you can adjust the number as needed)
+        $recentProducts = Product::latest()->take(5)->get();  // Adjust the number as needed
 
-     public function index()
-     {
-    //     // If the user is a System Owner, show the dashboard for the whole system
-        $departments = Department::all(); // You can list all departments or any relevant data
-        return view('systemowner.dashboard', compact('departments'));
+        // Fetch recent users (you can adjust the number as needed)
+        $recentUsers = User::latest()->take(5)->get();  // Adjust the number as needed
+
+        // Return the view with the required data
+        return view('systemowner.dashboard', compact('recentProducts', 'recentUsers'));
     }
-   
 }

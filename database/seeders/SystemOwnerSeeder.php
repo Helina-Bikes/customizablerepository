@@ -4,28 +4,31 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
-use App\Models\User; // Add this import for the User model
+use App\Models\User;
 use Spatie\Permission\Models\Role;
+
 class SystemOwnerSeeder extends Seeder
 {
     public function run()
     {
-        $user = User::create([
-            'name' => 'System Owner',
-            'email' => 'owner@example.com', // You can change the email to whatever you want
-            'password' => Hash::make('password123'), // You can change the password
-        ]);
+        // Ensure the role exists before assigning
+        $systemOwnerRole = Role::firstOrCreate(['name' => 'System Owner']);
 
-        // Assign the System Owner role to the user
-        $systemOwnerRole = Role::where('name', 'System Owner')->first();
-        
-        if ($systemOwnerRole) {
-            $user->assignRole($systemOwnerRole);
-        }
-        $roles = $user->roles;
+        // Create the user if they don't already exist
+        $user = User::firstOrCreate(
+            ['email' => 'owner@example.com'], // Check by email to prevent duplicate users
+            [
+                'name' => 'System Owner',
+                'password' => Hash::make('password123'), 
+            ]
+        );
 
-// Print roles
-    dd($roles);
+        // Assign the role to the user
+        $user->assignRole($systemOwnerRole);
+
+        // Debugging output
+        $roles = $user->getRoleNames(); // Fetch role names
+
+        dd($roles); // Should display ["System Owner"]
     }
 }

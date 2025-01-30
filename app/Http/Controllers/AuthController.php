@@ -20,17 +20,32 @@ class AuthController extends Controller
     public function Login(){
         return view("auth.login");
     }
-    public function LoginPost(Request $request){
+    public function LoginPost(Request $request)
+    {
         $request->validate([
-            "email"=>"required",
-            "password"=>"required",
+            "email" => "required",
+            "password" => "required",
         ]);
-        $credentials=$request->only("email","password",);
-        if(Auth::attempt($credentials)){
-            $user=Auth::user();
-                return redirect()->intended(route("admin.dashboard"));
+    
+        $credentials = $request->only("email", "password");
+    
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+    
+            // Check user role and redirect accordingly
+            if ($user->hasRole('System Owner')) {
+                return redirect()->route("systemowner.dashboard"); // Redirect owners
+            } elseif ($user->hasRole('Admin')) {  // Changed from else to elseif
+                return redirect()->route("admin.dashboard"); // Redirect admins
+            } else {
+                return redirect()->route("user.dashboard"); // Redirect other users
+            }
         }
+    
+        // If login fails, return error message
+        return back()->withErrors(["email" => "Invalid credentials"]);
     }
+    
     public function Register(){
         $departments = Department::all();
         $roles = Role::all();

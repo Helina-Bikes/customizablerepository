@@ -18,7 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
              'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
              'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
              'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
-             'check.systemowner' => \App\Http\Middleware\CheckSystemOwnerRole::class,
+             'checksystemowner' => \App\Http\Middleware\CheckSystemOwnerRole::class,
          ]);
     }) 
     
