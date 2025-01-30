@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Department;
@@ -7,35 +6,50 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    // Show the form for creating a new department
+    public function index()
+    {
+        $departments = Department::all();
+        return view('department.index', compact('departments'));
+    }
+
     public function create()
     {
         return view('department.create');
     }
 
-    // Store the newly created department in the database
     public function store(Request $request)
     {
         $request->validate([
             'departmentname' => 'required|string|max:255',
-            'departmentdesc' => 'required|string',
+            'departmentdesc' => 'required|string|max:500',
         ]);
 
-        // Create a new department
-        Department::create([
-            'departmentname' => $request->departmentname,
-            'departmentdesc' => $request->departmentdesc,
-        ]);
-
-        // Redirect to department list
-        return redirect()->route('department.index');
+        Department::create($request->all());
+        return redirect()->route('department.index')->with('status', 'Department created successfully.');
     }
 
-    // Display a listing of the departments
-    public function index()
+    public function edit($id)
     {
-        $department = Department::all();
-        return view('department.index', compact('department'));
+        $department = Department::findOrFail($id);
+        return view('department.edit', compact('department'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:500',
+        ]);
+
+        $department = Department::findOrFail($id);
+        $department->update($request->all());
+        return redirect()->route('department.index')->with('status', 'Department updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $department = Department::findOrFail($id);
+        $department->delete();
+        return redirect()->route('department.index')->with('status', 'Department deleted successfully.');
     }
 }
-

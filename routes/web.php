@@ -10,14 +10,18 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Middleware\CheckSystemOwnerRole;
 
 Route::resource('permissions', PermissionController::class);
 Route::middleware(['auth'])->group(function () {
-  // System Owner Dashboard (only accessible by System Owner)
-  Route::middleware(['check.systemowner'])->get('/systemowner-dashboard', [SystemOwnerDashboardController::class, 'index'])->name('systemowner.dashboard');
-  
-  // Admin Dashboard (accessible to all authenticated users)
-  Route::get('/admin/dashboard', [AuthController::class, 'index'])->name('admin.dashboard');
+  // System Owner Dashboard
+  Route::get('/systemowner-dashboard', [SystemOwnerDashboardController::class, 'index'])
+      ->middleware('check.systemowner')
+      ->name('systemowner.dashboard');
+
+  // Admin Dashboard
+  Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+      
 });
 
 // Route::prefix('users')->middleware('auth')->group(function () {
@@ -85,6 +89,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     //   Route::get('index', [DepartmentController::class, 'index'])->name('department.index');
     // });
 
+    Route::resource('department', App\Http\Controllers\DepartmentController::class);
     Route::resource('product', App\Http\Controllers\ProductController::class);
     
   

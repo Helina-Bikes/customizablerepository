@@ -1,22 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Department</title>
-</head>
-<body>
-    <h1>Add Department</h1>
-    <form action="{{ route('department.store') }}" method="POST">
-        @csrf
-        <!-- Department form fields here -->
-        <label for="departmentname">Organization Name</label>
-        <input type="text" name="departmentname" required><br>
+@extends('layouts.default')
 
-        <label for="departmentdesc">Organization Description</label>
-        <input type="text" name="departmentdesc" required><br>
+@section('content')
 
-        <button type="submit">Add Organiation</button>
-    </form>
-</body>
-</html>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Add Department</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('department.store') }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="departmentname" class="form-label">Department Name</label>
+                            <input type="text" class="form-control" id="departmentname" name="departmentname" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="departmentdesc" class="form-label">Description</label>
+                            <textarea class="form-control" id="departmentdesc" name="departmentdesc" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Department</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection

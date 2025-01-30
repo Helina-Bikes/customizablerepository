@@ -23,5 +23,9 @@ class SystemOwnerSeeder extends Seeder
         if ($systemOwnerRole) {
             $user->assignRole($systemOwnerRole);
         }
+        $roles = $user->roles;
+
+// Print roles
+    dd($roles);
     }
 }

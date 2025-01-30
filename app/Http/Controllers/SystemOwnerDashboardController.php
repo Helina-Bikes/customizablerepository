@@ -13,14 +13,11 @@ class SystemOwnerDashboardController extends Controller
         $this->middleware('role:System Owner');
     }
 
-    // public function index()
-    // {
+     public function index()
+     {
     //     // If the user is a System Owner, show the dashboard for the whole system
-    //     $departments = Department::all(); // You can list all departments or any relevant data
-    //     return view('systemowner.dashboard', compact('departments'));
-    // }
-    public function open()
-    {
-        return view('systemowner.dashboard');
+        $departments = Department::all(); // You can list all departments or any relevant data
+        return view('systemowner.dashboard', compact('departments'));
     }
+   
 }
