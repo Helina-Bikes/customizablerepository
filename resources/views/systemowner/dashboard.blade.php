@@ -49,8 +49,8 @@
     <div class="card bg-warning text-dark shadow-lg mb-4">
         <div class="card-body d-flex justify-content-between align-items-center">
             <div>
-                <h4 class="card-title text-dark">Total Categories</h4>
-                <h5 class="card-text text-dark">{{ \App\Models\Category::count() }}</h5>
+                <h4 class="card-title text-dark">Total Organizations</h4>
+                <h5 class="card-text text-dark">{{ \App\Models\Department::count() }}</h5>
             </div>
             <div>
                 <!-- Updated Icon -->
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="card-footer bg-transparent border-0 d-flex align-items-center justify-content-between">
-            <a class="small text-dark stretched-link" href="{{ route('category.index') }}">View Details</a>
+            <a class="small text-dark stretched-link" href="{{ route('department.index') }}">View Details</a>
             <div class="small text-dark"><i class="fas fa-angle-right"></i></div>
         </div>
     </div>

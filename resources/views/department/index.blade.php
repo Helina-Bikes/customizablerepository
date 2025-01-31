@@ -28,8 +28,8 @@
                             @foreach($departments as $department)
                                 <tr>
                                     <td>{{ $department->id }}</td>
-                                    <td>{{ $department->name }}</td>
-                                    <td>{{ $department->description }}</td>
+                                    <td>{{ $department->departmentname }}</td>
+                                    <td>{{ $department->departmentdesc }}</td>
                                     <td>
                                         <a href="{{ route('department.edit', $department->id) }}" class="btn btn-success">Edit</a>
                                         <form action="{{ route('department.destroy', $department->id) }}" method="POST" class="d-inline" id="delete-form-{{ $department->id }}">

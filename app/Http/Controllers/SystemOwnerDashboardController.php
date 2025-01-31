@@ -1,7 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-
-
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Category;
@@ -11,6 +9,7 @@ class SystemOwnerDashboardController extends Controller
 {
     public function index()
     {
+      
         // Fetch the recent products (you can adjust the number as needed)
         $recentProducts = Product::latest()->take(5)->get();  // Adjust the number as needed
 

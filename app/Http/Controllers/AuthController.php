@@ -38,7 +38,7 @@ class AuthController extends Controller
             } elseif ($user->hasRole('Admin')) {  // Changed from else to elseif
                 return redirect()->route("admin.dashboard"); // Redirect admins
             } else {
-                return redirect()->route("user.dashboard"); // Redirect other users
+                return redirect()->route("admin.dashboard"); // Redirect other users
             }
         }
     
