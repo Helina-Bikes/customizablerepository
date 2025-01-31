@@ -14,25 +14,25 @@ class ProductController extends Controller
 {
     public function index()
     {
-        // Fetch the department_id of the authenticated user
-        $userDepartmentId = Auth::user()->department_id;
+        if (Auth::user()->hasRole('System Owner')) {
+            // If the user is a System Owner, show all products
+            $products = DB::table('products')
+                ->join('categories', 'products.category_id', '=', 'categories.id')
+                ->join('department', 'products.department_id', '=', 'department.id')
+                ->select('products.*', 'categories.catname', 'department.departmentname')
+                ->get();
+        } else {
+            // If the user has a department, filter products by department
+            $userDepartmentId = Auth::user()->department_id;
+            $products = DB::table('products')
+                ->join('categories', 'products.category_id', '=', 'categories.id')
+                ->join('department', 'products.department_id', '=', 'department.id')
+                ->select('products.*', 'categories.catname', 'department.departmentname')
+                ->where('products.department_id', '=', $userDepartmentId)
+                ->get();
+        }
     
-        // Query the products that belong to the user's department
-        $products = DB::table('products')
-            ->join('categories', 'products.category_id', '=', 'categories.id')
-            ->join('department', 'products.department_id', '=', 'department.id')
-            ->select('products.*', 'categories.catname', 'department.departmentname')
-            ->where('products.department_id', '=', $userDepartmentId) // Filter by department_id
-            ->get();
-
-        
-           
-    
-        // Pass the filtered products to the view
-        return view('product.index', [
-            'products' => $products,
-            
-        ]);
+        return view('product.index', compact('products'));
     }
     
 

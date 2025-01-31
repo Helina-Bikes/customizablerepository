@@ -31,6 +31,7 @@
                             </a>
                             <div class="collapse" id="collapsePeoples" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ route('register') }}">Register Users</a>
                                     <a class="nav-link" href="{{route('users.index')}}">View Users</a>
                                     <a class="nav-link" href="{{route('roles.index')}}">View Roles</a>
                                     <a class="nav-link" href="{{route('permissions.index')}}">View Permissions</a>
