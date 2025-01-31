@@ -22,14 +22,25 @@ class UserController extends Controller
     }
     // Fetch all users with roles
     public function index()
-{
-   $users=User::get();
-   $users = User::where('name', '!=', 'System Owner')->get();
-    return view('users.index',[
-        'users'=>$users
-
-    ]);
-}
+    {
+        $authUser = Auth::user();
+    
+        // Check if the authenticated user has the 'System Owner' role
+        if ($authUser->hasRole('System Owner')) {
+            // If the user is a System Owner, show all users
+            $users = User::where('name', '!=', 'System Owner')->get();
+        } else {
+            // Otherwise, show only users from the same department as the logged-in user
+            $users = User::where('department_id', $authUser->department_id)
+                         ->where('name', '!=', 'System Owner')
+                         ->get();
+        }
+    
+        return view('users.index', [
+            'users' => $users
+        ]);
+    }
+    
     
 
     // Show form to create a new user

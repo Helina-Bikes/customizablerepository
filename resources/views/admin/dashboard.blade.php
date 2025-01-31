@@ -9,7 +9,7 @@
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
                     <h4 class="card-title text-white">Total Products</h4>
-                    <h5 class="card-text text-white">{{ \App\Models\Product::count() }}</h5>
+                    <h5 class="card-text text-white">{{ $totalProducts }}</h5>
                 </div>
                 <div>
                     <i class="fas fa-box-open fa-1x text-white"></i>
@@ -28,7 +28,7 @@
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
                     <h4 class="card-title text-dark">Total Users</h4>
-                    <h5 class="card-text text-dark">{{ \App\Models\User::count() }}</h5>
+                    <h5 class="card-text text-dark">{{ $totalUsers }}</h5>
                 </div>
                 <div>
                     <i class="fas fa-users fa-3x text-dark"></i>
@@ -50,7 +50,7 @@
         <div class="card-body d-flex justify-content-between align-items-center">
             <div>
                 <h4 class="card-title text-dark">Total Categories</h4>
-                <h5 class="card-text text-dark">{{ \App\Models\Category::count() }}</h5>
+                <h5 class="card-text text-dark">{{ $totalCategories }}</h5>
             </div>
             <div>
                 <!-- Updated Icon -->
