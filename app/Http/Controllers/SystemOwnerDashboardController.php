@@ -15,7 +15,9 @@ class SystemOwnerDashboardController extends Controller
 
         // Fetch recent users (you can adjust the number as needed)
         $recentUsers = User::latest()->take(5)->get();  // Adjust the number as needed
-
+        $totalProducts = Product::count();
+        $totalUsers = User::count();
+        $totalCategories = Category::count();
         // Return the view with the required data
         return view('systemowner.dashboard', compact('recentProducts', 'recentUsers'));
     }

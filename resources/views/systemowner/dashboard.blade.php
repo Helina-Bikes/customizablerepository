@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="card-footer bg-transparent border-0 d-flex align-items-center justify-content-between">
-                <a class="small text-white stretched-link" href="{{ route('product.index') }}">View Details</a>
+            <a class="small text-white stretched-link" href="{{ route('product.index') }}">View Details</a>
                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="card-footer bg-transparent border-0 d-flex align-items-center justify-content-between">
-                <a class="small text-dark stretched-link" href="{{ route('users.index') }}">View Details</a>
+            <a class="small text-dark stretched-link" href="{{ route('users.index') }}">View Details</a>
                 <div class="small text-dark"><i class="fas fa-angle-right"></i></div>
             </div>
         </div>
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="card-footer bg-transparent border-0 d-flex align-items-center justify-content-between">
-            <a class="small text-dark stretched-link" href="{{ route('department.index') }}">View Details</a>
+        <a class="small text-dark stretched-link" href="{{ route('department.index') }}">View Details</a>
             <div class="small text-dark"><i class="fas fa-angle-right"></i></div>
         </div>
     </div>

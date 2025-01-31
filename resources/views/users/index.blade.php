@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends(Auth::user()->hasRole('System Owner') ? 'layouts.default' : 'layouts.admin')
 @section('content')
     <div class="container">
         <h1>Users List</h1>
