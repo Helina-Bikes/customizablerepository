@@ -8,7 +8,7 @@ use Spatie\Permission\Models\Permission;
 class PermissionController extends Controller
 {
     public function _construct(){
-        $this->middleware('permission:Delete Delete Permission',['only'=>['destroy']]);
+        $this->middleware('permission:Delete Permission',['only'=>['destroy']]);
         $this->middleware('permission:Add Permission',['only'=>['create','store']]);
         $this->middleware('permission:Edit Permission',['only'=>['Edit','Update']]);
     
