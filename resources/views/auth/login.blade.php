@@ -1,10 +1,8 @@
 @extends('layouts.navigation')
 @section('title', 'Login')
-
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-6">
-  
         @if(session()->has("success"))
             <div class="alert alert-success">
                 {{ session()->get("success") }}

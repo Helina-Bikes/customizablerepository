@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -12,14 +11,14 @@ class SystemOwnerSeeder extends Seeder
     public function run()
     {
         // Ensure the role exists before assigning
-        $systemOwnerRole = Role::firstOrCreate(['name' => 'System Owner']);
+        $systemOwnerRole = Role::firstOrCreate(['name' => 'Netsanet']);
 
         // Create the user if they don't already exist
         $user = User::firstOrCreate(
-            ['email' => 'owner@example.com'], // Check by email to prevent duplicate users
+            ['email' => 'netsi@gmail.com'], // New email
             [
-                'name' => 'System Owner',
-                'password' => Hash::make('password123'), 
+                'name' => 'Netsanet', // New name
+                'password' => Hash::make('babyenanye'), // New password
             ]
         );
 
